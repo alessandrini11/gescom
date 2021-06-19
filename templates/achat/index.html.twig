@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Achat{% endblock %}
+
+{% block body %}
+    <div class="overflow-x-auto">
+        <div class="min-w-screen flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
+            <div class="w-full lg:w-5/6">
+                <h1 class="text-2xl mt-5">Achat </h1>
+                <p class="text-right"><a class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" href="{{ path('achat_new') }}"><i class="fas fa-plus"></i></a></p>
+                <div class="bg-white shadow-md rounded my-6">
+                    <table class="w-full">
+                        <thead>
+                        <tr>
+                            <th class="py-3 px-6">Id</th>
+                            <th class="py-3 px-6">Produit</th>
+                            <th class="py-3 px-6">Quantité</th>
+                            <th class="py-3 px-6">Prix</th>
+                            <th class="py-3 px-6">Date</th>
+                            <th class="py-3 px-6">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for achat in achats %}
+
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+
+                                <td class="py-3 px-6 text-center">
+                                    <span>{{ achat.id }}</span>
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                        <span>{{ achat.client.nom }}</span>
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                    <span>{{ achat.quantite }}</span>
+                                </td>
+                                {% set total = 0 %}
+                                {% for produit in achat.produits %}
+                                    {% set prix = produit.prixVente * achat.quantite %}
+                                    {% set total = total + prix %}
+                                {% endfor %}
+                                <td class="py-3 px-6 text-center">
+                                    <span>{{ total }} XAF</span>
+                                </td>
+                                <td class="py-3 px-6 text-center">
+                                    <span>{{ achat.createdAT | date('d/M/Y') }}</span>
+                                </td>
+
+                                <td class="py-3 px-6 text-center">
+                                    <div class="flex item-center justify-center">
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <a href="{{ path('achat_show', {'id': achat.id}) }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                </svg>
+                                            </a>
+
+                                        </div>
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <a href="{{ path('achat_edit', {'id': achat.id}) }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                </svg>
+                                            </a>
+
+                                        </div>
+                                        <div class="w-4 mr-2 mb-2 transform hover:text-purple-500 hover:scale-110">
+                                            {% include('achat/_delete_form.html.twig') %}
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

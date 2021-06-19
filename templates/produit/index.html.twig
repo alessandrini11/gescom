@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+    <div class="overflow-x-auto">
+        <div class="min-w-screen flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
+            <div class="w-full lg:w-5/6">
+                <h1 class="text-2xl mt-5">Produit </h1>
+                <p class="text-right"><a class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" href="{{ path('produit_new') }}"><i class="fas fa-plus"></i></a></p>
+                <div class="bg-white shadow-md rounded my-6">
+                    <table class="min-w-max w-full table-fixed">
+                    <thead>
+                        <tr>
+                            <th class="py-3 px-6">Nom</th>
+                            <th class="py-3 px-6">Fabriquant</th>
+                            <th class="py-3 px-6">Categorie</th>
+                            <th class="py-3 px-6">Fournisseur</th>
+                            <th class="py-3 px-6">PrixAchat</th>
+                            <th class="py-3 px-6">PrixVente</th>
+                            <th class="py-3 px-6">Quantite</th>
+                            <th class="py-3 px-6">actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for produit in produits %}
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center justify-center">
+                                    <span>{{ produit.nom }}</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-left">
+                                <div class="flex items-center">
+                                    <span>{{ produit.fabriquant }}</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-left">
+                                <div class="flex items-center">
+                                    <span>{{ produit.categorie.nom }}</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 ">
+                                <span>{{ produit.fournisseur.nom }}</span>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <span>{{ produit.prixAchat }} XAF</span>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    <span>{{ produit.prixVente }} XAF</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center justify-center">
+                                    <span class="font-medium">{{ produit.quantite }}</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                        <a href="{{ path('produit_show', {'id': produit.id}) }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            </svg>
+                                        </a>
+
+                                    </div>
+                                    <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                        <a href="{{ path('produit_edit', {'id': produit.id}) }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                            </svg>
+                                        </a>
+
+                                    </div>
+                                    <div class="w-4 mr-2 mb-2 transform hover:text-purple-500 hover:scale-110">
+                                        {% include('produit/_delete_form.html.twig') %}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -10,3 +10,13 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
+window.addEventListener("load",function () {
+    const btn = document.querySelector('#menu-btn')
+    const mobileMenu = document.querySelector('#mobile-menu')
+
+    function toggleMenu() {
+        mobileMenu.classList.toggle('-left-full')
+    }
+
+    btn.addEventListener("click",toggleMenu)
+})

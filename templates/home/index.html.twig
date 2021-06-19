@@ -3,18 +3,152 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="w-11/12 mx-auto">
+        <section class="my-3">
+            <div class="">
+                <div class="grid grid-cols-3 gap-2 text-white ">
+                    <div class="flex flex-col h-20 p-2 bg-purple-500 ">
+                        <p>Produits <i class="fas fa-wallet"></i></p>
+                        <p class="mt-auto ml-auto"><span class="counter">0</span></p>
+                    </div>
+                    <div class="flex flex-co h-20 p-2 bg-red-500">
+                        <p>Catégories <i class="fas fa-cog"></i></p>
+                        <p class="mt-auto ml-auto"><span class="counter">0</span></p>
+                    </div>
+                    <div class="flex flex-col h-20 p-2 bg-yellow-500">
+                        <p>Fournisseurs <i class="fas fa-user-clock"></i></p>
+                        <p class="mt-auto ml-auto"><span class="counter" >0</span></p>
+                    </div>
+                    <div class="flex flex-col h-20 p-2 bg-indigo-900">
+                        <p>Clients <i class="fas fa-users-cog"></i></p>
+                        <p class="mt-auto ml-auto"><span class="counter" >0</span></p>
+                    </div>
+                    <div class="flex flex-col h-20 p-2 bg-green-500">
+                        <p>Utilisateurs <i class="fas fa-user"></i></p>
+                        <p class="mt-auto ml-auto"><span class="counter" >0</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="my-3">
+            <div class="">
+                <div class="grid grid-cols-3 gap-2 text-white ">
+                    <div class="flex flex-col h-20 p-2 bg-blue-500 ">
+                        <p>Depenses <i class="fa fa-plus"></i></p>
+                        <p class="mt-auto ml-auto"><span class="counter">0</span></p>
+                    </div>
+                    <div class="flex flex-co h-20 p-2 bg-pink-500">
+                        <p>Revenus <i class="fa fa-minus-circle"></i></p>
+                        <p class="mt-auto ml-auto"><span class="counter">0</span></p>
+                    </div>
+                    <div class="flex flex-col h-20 p-2 bg-green-900">
+                        <p>% bénéfices <i class="far fa-money-bill-alt"></i></p>
+                        <p class="mt-auto ml-auto"><span class="counter" >0</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="my-3">
+            <h2 class="mb-3 text-2xl">Vente Recente</h2>
+            <table class="w-full text-center">
+                <thead class="bg-black text-white">
+                <tr>
+                    <th>Produit</th>
+                    <th>Client</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="bg-gray-100">
+                    <td>Huil mayor</td>
+                    <td> 2</td>
+                    <td>1500</td>
+                    <td>12 jan 2021</td>
+                </tr>
+                <tr class="bg-gray-100">
+                    <td>Huil mayor</td>
+                    <td> 2</td>
+                    <td>1500</td>
+                    <td>12 jan 2021</td>
+                </tr>
+                <tr class="bg-gray-100">
+                    <td>Huil mayor</td>
+                    <td> 2</td>
+                    <td>1500</td>
+                    <td>12 jan 2021</td>
+                </tr>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+                </tbody>
+            </table>
+        </section>
+        <section class="my-3">
+            <h2 class="mb-3 text-2xl">Livraison Recente</h2>
+            <table class="w-full text-center">
+                <thead class="bg-black text-white">
+                <tr>
+                    <th>Produit</th>
+                    <th>Fournisseurs</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="bg-gray-100">
+                    <td>Huil mayor</td>
+                    <td> 2</td>
+                    <td>1500</td>
+                    <td>12 jan 2021</td>
+                </tr>
+                <tr class="bg-gray-100">
+                    <td>Huil mayor</td>
+                    <td> 2</td>
+                    <td>1500</td>
+                    <td>12 jan 2021</td>
+                </tr>
+                <tr class="bg-gray-100">
+                    <td>Huil mayor</td>
+                    <td> 2</td>
+                    <td>1500</td>
+                    <td>12 jan 2021</td>
+                </tr>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/web projects/git_fund/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/web projects/git_fund/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+                </tbody>
+            </table>
+        </section>
+        <section class="my-3">
+            <h2 class="mb-3 text-2xl">Nouveaux Clients</h2>
+            <table class="w-full text-center">
+                <thead class="bg-black text-white">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Ville</th>
+                    <th>Adresse</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="bg-gray-100">
+                    <td>Huil mayor</td>
+                    <td> 2</td>
+                    <td>1500</td>
+                    <td>12 jan 2021</td>
+                </tr>
+                <tr class="bg-gray-100">
+                    <td>Huil mayor</td>
+                    <td> 2</td>
+                    <td>1500</td>
+                    <td>12 jan 2021</td>
+                </tr>
+                <tr class="bg-gray-100">
+                    <td>Huil mayor</td>
+                    <td> 2</td>
+                    <td>1500</td>
+                    <td>12 jan 2021</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </section>
+    </div>
 {% endblock %}
